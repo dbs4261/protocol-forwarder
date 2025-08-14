@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEL Protocol Forwarder</title>
+    <script>
+        window.onload = function() {
+            let urlParams = new URLSearchParams(window.location.search);
+            const phoneNumber = urlParams.get('phone');
+            let message = urlParams.get('message');
+
+            // console.log(phoneNumber);
+
+            if (!phoneNumber) {
+                // Some error messaging.
+                document.body.innerHTML = '<h1>Error: No phone number provided.</h1>';
+                document.body.innerHTML += '<p>Make sure to provide one phone number in the URL query string ("?phone=...").</p>';
+                return;
+            }
+
+            if (phoneNumber) {
+                // Trim leading spaces and replace them with '+' to align with Apple's syntax
+                const formattedPhoneNumber = phoneNumbers.split(',').map(number => '+' + number.trim()).join(',');
+                
+                console.log(formattedPhoneNumber);
+
+                // Initialize smsUrl with multiple recipients support
+                let telUrl = `tel:${formattedPhoneNumbers}`;
+                if (message) {
+                    // Check if the message is already URI encoded
+                    const decodedMessage = decodeURIComponent(message);
+                    if (message === encodeURIComponent(decodedMessage)) {
+                        telUrl += `&body=${message}`;
+                    } else {
+                        telUrl += `&body=${encodeURIComponent(message)}`;
+                    }
+                }
+                //console.log(telUrl);
+
+                // Redirect to telUrl
+                window.location.href = telUrl;
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+</body>
+</html>
