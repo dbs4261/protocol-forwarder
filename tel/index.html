@@ -19,13 +19,11 @@
             }
 
             if (phoneNumber) {
-                // Trim leading spaces and replace them with '+' to align with Apple's syntax
-                const formattedPhoneNumber = phoneNumbers.split(',').map(number => '+' + number.trim()).join(',');
                 
-                console.log(formattedPhoneNumber);
+                console.log(phoneNumber);
 
-                // Initialize smsUrl with multiple recipients support
-                let telUrl = `tel:${formattedPhoneNumbers}`;
+                // Initialize telUrl
+                let telUrl = `tel:${phoneNumber}`;
                 //console.log(telUrl);
 
                 // Redirect to telUrl
