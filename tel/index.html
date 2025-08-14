@@ -8,7 +8,6 @@
         window.onload = function() {
             let urlParams = new URLSearchParams(window.location.search);
             const phoneNumber = urlParams.get('phone');
-            let message = urlParams.get('message');
 
             // console.log(phoneNumber);
 
@@ -27,15 +26,6 @@
 
                 // Initialize smsUrl with multiple recipients support
                 let telUrl = `tel:${formattedPhoneNumbers}`;
-                if (message) {
-                    // Check if the message is already URI encoded
-                    const decodedMessage = decodeURIComponent(message);
-                    if (message === encodeURIComponent(decodedMessage)) {
-                        telUrl += `&body=${message}`;
-                    } else {
-                        telUrl += `&body=${encodeURIComponent(message)}`;
-                    }
-                }
                 //console.log(telUrl);
 
                 // Redirect to telUrl
