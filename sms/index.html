@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEL Protocol Forwarder</title>
+    <title>SMS Protocol Forwarder</title>
     <script>
         window.onload = function() {
             let urlParams = new URLSearchParams(window.location.search);
@@ -20,13 +20,10 @@
             }
 
             if (phoneNumber) {
-                // Trim leading spaces and replace them with '+' to align with Apple's syntax
-                const formattedPhoneNumber = phoneNumbers.split(',').map(number => '+' + number.trim()).join(',');
-                
-                console.log(formattedPhoneNumber);
+                console.log(phoneNumber);
 
                 // Initialize smsUrl with multiple recipients support
-                let smsUrl = `sms:${formattedPhoneNumbers}`;
+                let smsUrl = `sms:${phoneNumber}`;
                 if (message) {
                     // Check if the message is already URI encoded
                     const decodedMessage = decodeURIComponent(message);
